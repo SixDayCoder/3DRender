@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Math3D">
+      <UniqueIdentifier>{c02c6940-4ed4-4503-abbe-b7b32178eacd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device">
+      <UniqueIdentifier>{4e3e8ded-cbe5-4491-a09c-f30dadc0ebf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{3dbe5344-1947-4441-bcb8-99c1046dc79b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="device\Canvas.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="device\MainWindow.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="device\Scene.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Camera.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Light.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\MathDefine.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Matrix.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Mesh.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Model.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Shader.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Texture2D.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Timer.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Utils.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Vector.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="math3d\Vertex.h">
+      <Filter>Math3D</Filter>
+    </ClInclude>
+    <ClInclude Include="test\BoxDemo.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="device\Canvas.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="device\MainWindow.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="device\Scene.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Camera.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Matrix.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Mesh.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Model.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Shader.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Texture2D.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Timer.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Utils.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="math3d\Vector.cpp">
+      <Filter>Math3D</Filter>
+    </ClCompile>
+    <ClCompile Include="test\BoxDemo.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
