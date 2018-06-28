@@ -11,7 +11,6 @@ Model::Model()
 	scale = Vector3(1, 1, 1);
 	rotation = Vector3::Zero;
 	world.SetIdentity();
-	texture = Texture2D::LoadTexture2D(L"resources/texture/dark_red.jpg");
 }
 
 void Model::Update()

@@ -2,6 +2,7 @@
 
 #include "Texture2D.h"
 #include "Matrix.h"
+#include "Vertex.h"
 
 class Shader
 {
@@ -12,9 +13,11 @@ public:
 	Shader& operator=(const Shader& other);
 	~Shader();
 
+	const Matrix& World()const { return m_World; }
+	void  SetWorld(const Matrix& mat) { m_World = mat; }
 
-	const Texture2D& Texture()const;
-	void  SetTexture2D(const Texture2D& tex);
+	const Texture2D& Texture()const { return m_Texture; }
+	void  SetTexture2D(const Texture2D& tex) { m_Texture = tex; }
 
 	const Matrix& View()const { return m_View; }
 	void  SetView(const Matrix& mat){ m_View = mat; }
@@ -22,9 +25,14 @@ public:
 	const Matrix& Projection()const { return m_Projection; }
 	void SetProjection(const Matrix& mat) { m_Projection = mat; }
 
+	VertexOut VS(const VertexIn& v) const;
+
+	Vector4   PS(const VertexOut& v) const;
+
 private:
 
 	Texture2D  m_Texture;
+	Matrix     m_World;
 	Matrix     m_View;
 	Matrix     m_Projection;
 };

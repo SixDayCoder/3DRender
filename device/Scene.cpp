@@ -66,17 +66,17 @@ void Scene::Render()
 
 	for (Mesh& mesh : m_Meshes)
 	{
+		mesh.shader.SetWorld(mesh.model);
 		mesh.shader.SetView(view);
 		mesh.shader.SetProjection(projection);
-		mesh.shader.SetTexture2D(mesh.texture);
 		m_pCanvas->DrawMesh(mesh);
 	}
 
 	for (Model& model : m_Models)
 	{
+		model.shader.SetWorld(model.world);
 		model.shader.SetView(view);
 		model.shader.SetProjection(projection);
-		model.shader.SetTexture2D(model.texture);
 		m_pCanvas->DrawModel(model);
 	}
 	

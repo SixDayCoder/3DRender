@@ -16,7 +16,6 @@ public:
 	Vector3    position;
 	Vector3    rotation;
 	Vector3    scale;
-	Texture2D  texture;
 	Shader     shader;
 
 	vector<VertexIn> vertices;

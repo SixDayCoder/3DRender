@@ -30,6 +30,7 @@ public:
 	void SetViewPort(int left, int top, int width, int height);
 
 	void  DrawMesh(const Mesh& mesh);
+
 	void  DrawModel(const Model& model);
 
 
@@ -37,9 +38,7 @@ public:
 	int Height() const { return m_height; }
 
 	uint32*& GetFrameBuffer() { return m_pFrameBuffer; }
-
-	Texture2D tex;
-	Matrix m_screen;
+	Matrix m_Screen;
 
 private:
 
@@ -56,7 +55,6 @@ private:
 private:
 
 	RenderMode m_RenderMode;
-
 	uint32* m_pFrameBuffer;
 	real **m_zBuffer;
 

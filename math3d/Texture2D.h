@@ -39,6 +39,8 @@ public:
 	uint32   m_height;
 	Vector4* m_pixelBuffer;
 
+public:
+
 	static Texture2D LoadTexture2D(const wchar_t* filePath);
 };
 

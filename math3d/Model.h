@@ -32,7 +32,6 @@ public:
 
 	Matrix    world;
 	Shader    shader;
-	Texture2D texture;
 
 	Vector3   position;
 	Vector3   rotation;

@@ -200,7 +200,7 @@ Matrix Matrix::Adjugate()const
 	return result.Transpose();
 }
 
-Matrix Matrix::Inverse()const
+Matrix Matrix::Inverse() const
 {
 	real d = abs(Det());
 	Matrix adj = Adjugate();

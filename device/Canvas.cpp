@@ -60,7 +60,7 @@ void Canvas::SetZ(int x, int y, real z)
 
 void Canvas::SetViewPort(int left, int top, int width, int height)
 {
-	m_screen = Utils::Viewport(left, top, width, height);
+	m_Screen = Utils::Viewport(left, top, width, height);
 }
 
 
@@ -109,9 +109,6 @@ void Canvas::DrawMesh(const Mesh & mesh)
 {
 	const vector<uint32>& indices = mesh.indices;
 	const vector<VertexIn>& vertices = mesh.vertices;
-	const Matrix& world = mesh.model;
-	const Matrix& view = mesh.shader.View();
-	const Matrix& projection = mesh.shader.Projection();
 
 	for (uint32 i = 0; i < mesh.indices.size(); i += 3)
 	{
@@ -119,40 +116,37 @@ void Canvas::DrawMesh(const Mesh & mesh)
 		VertexIn p2 = vertices[ indices[i + 1] ];
 		VertexIn p3 = vertices[ indices[i + 2] ];
 
-		VertexOut v1 = Utils::TransofrmToProjection(p1, world, view, projection);//点变换到投影坐标系,在这里vertex的坐标实际上还是三维的
-		VertexOut v2 = Utils::TransofrmToProjection(p2, world, view, projection);
-		VertexOut v3 = Utils::TransofrmToProjection(p3, world, view, projection);
+		VertexOut v1 = mesh.shader.VS(p1);
+		VertexOut v2 = mesh.shader.VS(p2);
+		VertexOut v3 = mesh.shader.VS(p3);
 
-		if (Utils::BackFaceCulling(p1, p2, p3) == false)//做背面消隐(这个算法的目的是把背对着我们的那些vertex去掉,因为看不到它所以不渲染它)
+		if (Utils::BackFaceCulling(p1, p2, p3) == false)
 		{
 			continue;
 		}
 
-		if (Utils::HomogenClip(v1) == false && //裁剪算法,把在投影坐标系下之外的点不渲染
+		if (Utils::HomogenClip(v1) == false && 
 			Utils::HomogenClip(v2) == false &&
 			Utils::HomogenClip(v3) == false)
 		{
 			continue;
 		}
 
-		Utils::HomogenDivide(v1); //这里做了叫做透视除法的算法，做完之后变为二维的坐标,且x和y都在[-1,1]之间
+		Utils::HomogenDivide(v1); 
 		Utils::HomogenDivide(v2);
 		Utils::HomogenDivide(v3);
 
-		Utils::TransformToScreen(m_screen, v1);//将在[-1,1]之间的标准x,y坐标放大到屏幕的实际坐标
-		Utils::TransformToScreen(m_screen, v2);//在Main.cpp中,MainWindow window(hInstance, 800, 600, "Fancy");  屏幕的宽是800 高是600
-		Utils::TransformToScreen(m_screen, v3);
+		Utils::TransformToScreen(m_Screen, v1);
+		Utils::TransformToScreen(m_Screen, v2);
+		Utils::TransformToScreen(m_Screen, v3);
 
-		DrawTriangle(v1, v2, v3, mesh.shader);//画三角形,从这个函数开始就不要考虑什么变换了
+		DrawTriangle(v1, v2, v3, mesh.shader);
 	}
 }
 
 void Canvas::DrawModel(const Model & model)
 {
 	const vector<Mesh>& meshes = model.Meshes();
-	const Matrix& world = model.world;
-	const Matrix& view = model.shader.View();
-	const Matrix& projection = model.shader.Projection();
 	const Shader& shader = model.shader;
 
 	for (uint32 i = 0; i < meshes.size(); ++i)
@@ -167,9 +161,9 @@ void Canvas::DrawModel(const Model & model)
 			VertexIn p2 = vertices[indices[j + 1]];
 			VertexIn p3 = vertices[indices[j + 2]];
 
-			VertexOut v1 = Utils::TransofrmToProjection(p1, world, view, projection);
-			VertexOut v2 = Utils::TransofrmToProjection(p2, world, view, projection);
-			VertexOut v3 = Utils::TransofrmToProjection(p3, world, view, projection);
+			VertexOut v1 = shader.VS(p1);
+			VertexOut v2 = shader.VS(p2);
+			VertexOut v3 = shader.VS(p3);
 
 			if (Utils::BackFaceCulling(p1, p2, p3) == false)
 			{
@@ -187,9 +181,9 @@ void Canvas::DrawModel(const Model & model)
 			Utils::HomogenDivide(v2);
 			Utils::HomogenDivide(v3);
 
-			Utils::TransformToScreen(m_screen, v1);
-			Utils::TransformToScreen(m_screen, v2);
-			Utils::TransformToScreen(m_screen, v3);
+			Utils::TransformToScreen(m_Screen, v1);
+			Utils::TransformToScreen(m_Screen, v2);
+			Utils::TransformToScreen(m_Screen, v3);
 
 			DrawTriangle(v1, v2, v3, shader);
 		}
@@ -267,43 +261,27 @@ void Canvas::ScanlineFill(const VertexOut & va, const VertexOut & vb, int yIndex
 	VertexOut left = va;
 	VertexOut right = vb;
 
-	if (va.position.x >= vb.position.x)
-	{
-		left = vb;
-		right = va;
-	}
-
+	if (va.position.x >= vb.position.x) { left = vb; right = va;}
 	real dx = right.position.x - left.position.x;
-
 	for (real x = left.position.x; x <= right.position.x; x += 1)
 	{
 		int xIndex = static_cast<int>(x + static_cast<real>(0.5));
-
 		if (xIndex >= 0 && xIndex < m_width)
 		{
 			real t = 0;
-			if (!Equal(dx, 0))
-			{
-				t = (x - left.position.x) / dx;
-			}
-
+			if (!Equal(dx, 0)) { t = (x - left.position.x) / dx; }
 			real rhw = Utils::Lerp(left.rhw, right.rhw, t);
-
 			if (rhw >= GetZ(xIndex, yIndex))
 			{
 				SetZ(xIndex, yIndex, rhw);
-
 				real w = 1 / rhw;
 				VertexOut out = Utils::Lerp(left, right, t);
-
 				out.position.x = xIndex;
 				out.position.y = yIndex;
-
 				out.worldPos *= w;
 				out.tex *= w;
 				out.color *= w;
-
-				DrawPixel(xIndex, yIndex, shader.Texture().Sample(out.tex));
+				DrawPixel(xIndex, yIndex, shader.PS(out));
 			}
 		}
 
