@@ -1,9 +1,9 @@
-#include "Model.h"
-#include "Utils.h"
+#include "math3d/Model.h"
+#include "math3d/Utils.h"
 #include <cassert>
 
-#include <assimp\postprocess.h>
-#include <assimp\Importer.hpp>
+#include "assimp/postprocess.h"
+#include "assimp/Importer.hpp"
 
 Model::Model()
 {

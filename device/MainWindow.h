@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scene.h"
+#include "device/Scene.h"
 
 #include <windows.h>
 #include <windowsx.h>

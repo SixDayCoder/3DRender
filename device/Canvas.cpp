@@ -1,6 +1,6 @@
-#include "Canvas.h"
-#include "Utils.h"
-#include "Vertex.h"
+#include "device/Canvas.h"
+#include "math3d/Utils.h"
+#include "math3d/Vertex.h"
 #include <algorithm>
 
 

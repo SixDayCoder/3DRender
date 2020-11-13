@@ -1,5 +1,5 @@
 #pragma once
-#include "Mesh.h"
+#include "math3d/Mesh.h"
 
 
 class BoxDemo

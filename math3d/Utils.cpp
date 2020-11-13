@@ -1,5 +1,5 @@
-#include "Utils.h"
-#include "Vertex.h"
+#include "math3d/Utils.h"
+#include "math3d/Vertex.h"
 #include <cmath>
 #include <algorithm>
 

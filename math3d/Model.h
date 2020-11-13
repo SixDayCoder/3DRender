@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Mesh.h"
+#include "math3d/Mesh.h"
 #include <vector>
 #include <string>
 
-#include <assimp\scene.h>
+#include "assimp\scene.h"
 
 
 

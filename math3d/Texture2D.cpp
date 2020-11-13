@@ -1,4 +1,5 @@
-#include "Texture2D.h"
+#include "math3d/Texture2D.h"
+
 #include <string.h>
 #include <windows.h>
 #include <comdef.h>

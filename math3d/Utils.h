@@ -1,7 +1,7 @@
 #pragma once
-#include "MathDefine.h"
-#include "Matrix.h"
-#include "Mesh.h"
+#include "math3d/MathDefine.h"
+#include "math3d/Matrix.h"
+#include "math3d/Mesh.h"
 
 class Utils
 {

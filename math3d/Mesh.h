@@ -1,8 +1,10 @@
 #pragma once
-#include "Vertex.h"
-#include "Texture2D.h"
-#include "Matrix.h"
-#include "Shader.h"
+
+#include "math3d/Vertex.h"
+#include "math3d/Texture2D.h"
+#include "math3d/Matrix.h"
+#include "math3d/Shader.h"
+
 #include <vector>
 using std::vector;
 

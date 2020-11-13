@@ -1,8 +1,9 @@
 
-#include "MainWindow.h"
-#include "BoxDemo.h"
-#include "Model.h"
-#include "Utils.h"
+#include "device/MainWindow.h"
+#include "test/BoxDemo.h"
+#include "math3d/Model.h"
+#include "math3d/Utils.h"
+
 
 #include <algorithm>
 #include <random>

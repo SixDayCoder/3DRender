@@ -1,6 +1,6 @@
 
-#include "Camera.h"
-#include "Utils.h"
+#include "math3d/Camera.h"
+#include "math3d/Utils.h"
 
 Camera::Camera(uint32 nWidth, uint32 nHeight)
 {	

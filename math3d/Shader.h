@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Texture2D.h"
-#include "Matrix.h"
-#include "Vertex.h"
+#include "math3d/Texture2D.h"
+#include "math3d/Matrix.h"
+#include "math3d/Vertex.h"
 
 class Shader
 {

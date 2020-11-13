@@ -1,8 +1,8 @@
 #pragma once
-#include "Canvas.h"
-#include "Model.h"
-#include "Light.h"
-#include "Camera.h"
+#include "device/Canvas.h"
+#include "math3d/Model.h"
+#include "math3d/Light.h"
+#include "math3d/Camera.h"
 
 #include <windows.h>
 #include <memory>

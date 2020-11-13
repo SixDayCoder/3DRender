@@ -1,7 +1,7 @@
-#include "Scene.h"
-#include "BoxDemo.h"
-#include "Light.h"
-#include "Utils.h"
+#include "device/Scene.h"
+#include "test/BoxDemo.h"
+#include "math3d/Light.h"
+#include "math3d/Utils.h"
 
 Scene::Scene()
 {

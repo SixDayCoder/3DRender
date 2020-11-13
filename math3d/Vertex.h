@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Vector.h"
-#include "MathDefine.h"
+#include "math3d/Vector.h"
+#include "math3d/MathDefine.h"
 
 class VertexIn
 {

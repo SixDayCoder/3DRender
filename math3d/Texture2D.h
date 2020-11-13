@@ -1,6 +1,6 @@
 #pragma once
-#include "MathDefine.h"
-#include "Vector.h"
+#include "math3d/MathDefine.h"
+#include "math3d/Vector.h"
 
 
 class Texture2D

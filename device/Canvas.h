@@ -1,6 +1,6 @@
 #pragma once
-#include "Mesh.h"
-#include "Model.h"
+#include "math3d/Mesh.h"
+#include "math3d/Model.h"
 #include <memory>
 
 

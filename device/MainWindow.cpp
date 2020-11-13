@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "device/MainWindow.h"
 #include <iostream>
 
 bool        MainWindow::m_IsValid = false;
